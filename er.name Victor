@@ -1,0 +1,10 @@
+[33mf8d95c3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m feat(frontend): adiciona tela de histórico médico
+[33m3f51653[m feat(frontend): adiciona tela de quartos
+[33m6278c89[m feat(frontend): adiciona tela de internações
+[33me0c1182[m feat(frontend): adiciona tela de agendamento de consultas
+[33m9086ecf[m feat(frontend): adiciona tela de profissionais da saúde
+[33m2de32d7[m feat(frontend): adiciona tela de cadastro de pacientes
+[33me5116ec[m feat(frontend): adiciona estilos base e painel inicial
+[33m85d0953[m docs: adiciona cartões CRC dos casos de uso principais
+[33m2ea60ae[m docs: adiciona diagrama de classes da camada Model
+[33mffc7107[m docs: adiciona README com visão geral e entregas do projeto
