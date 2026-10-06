@@ -18,5 +18,6 @@ Camadas Controller → Service → Repository → Model, com API REST em Spring 
 
 ## Integrantes
 
-- Nome Completo do Integrante 1
-- Nome Completo do Integrante 2
+- Victor Reis Silva de Paula
+- João Pedro Silva Dantas
+- José Victor Uliana
