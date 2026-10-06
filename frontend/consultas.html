@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consultas - Sistema Hospitalar</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>Sistema Hospitalar</h1><nav><a href="index.html">Início</a><a href="pacientes.html">Pacientes</a><a href="profissionais.html">Profissionais</a><a href="consultas.html" class=ativo>Consultas</a><a href="internacoes.html">Internações</a><a href="quartos.html">Quartos</a><a href="historico.html">Histórico</a></nav></header>
+<main>
+<h2>Consultas</h2>
+<section class="card"><form><label>Paciente<select><option>Selecione</option><option>Maria Souza</option><option>João Pereira</option></select></label><label>Profissional responsável<select><option>Selecione</option><option>Dra. Ana Lima</option><option>Dr. Carlos Dias</option></select></label><label>Data<input type="date"></label><label>Horário<input type="time"></label><label>Motivo da consulta<input type="text"></label><label class="largo">Observações médicas<textarea rows="3"></textarea></label><div class="acoes"><button type="button">Agendar consulta</button><button type="reset" class="sec">Limpar</button></div></form></section><section class="card"><table><thead><tr><th>Paciente</th><th>Profissional</th><th>Data</th><th>Horário</th><th>Motivo</th><th>Ações</th></tr></thead><tbody><tr><td>Maria Souza</td><td>Dra. Ana Lima</td><td>10/10/2026</td><td>09:00</td><td>Check-up</td><td><button type="button" class="sec">Editar</button> <button type="button" class="perigo">Excluir</button></td></tr><tr><td>João Pereira</td><td>Dr. Carlos Dias</td><td>10/10/2026</td><td>10:30</td><td>Dor no joelho</td><td><button type="button" class="sec">Editar</button> <button type="button" class="perigo">Excluir</button></td></tr></tbody></table></section>
+</main>
+</body>
+</html>
