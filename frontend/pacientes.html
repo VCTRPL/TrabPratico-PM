@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pacientes - Sistema Hospitalar</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>Sistema Hospitalar</h1><nav><a href="index.html">Início</a><a href="pacientes.html" class=ativo>Pacientes</a><a href="profissionais.html">Profissionais</a><a href="consultas.html">Consultas</a><a href="internacoes.html">Internações</a><a href="quartos.html">Quartos</a><a href="historico.html">Histórico</a></nav></header>
+<main>
+<h2>Pacientes</h2>
+<section class="card"><form><label>Nome<input type="text"></label><label>CPF<input type="text"></label><label>Data de nascimento<input type="date"></label><label>Telefone<input type="tel"></label><label>Endereço<input type="text"></label><label>E-mail<input type="email"></label><div class="acoes"><button type="button">Salvar paciente</button><button type="reset" class="sec">Limpar</button></div></form></section><section class="card"><table><thead><tr><th>Nome</th><th>CPF</th><th>Nascimento</th><th>Telefone</th><th>E-mail</th><th>Ações</th></tr></thead><tbody><tr><td>Maria Souza</td><td>000.000.000-01</td><td>12/03/1985</td><td>(31) 90000-0001</td><td>maria@email.com</td><td><button type="button" class="sec">Editar</button> <button type="button" class="perigo">Excluir</button></td></tr><tr><td>João Pereira</td><td>000.000.000-02</td><td>25/07/1990</td><td>(31) 90000-0002</td><td>joao@email.com</td><td><button type="button" class="sec">Editar</button> <button type="button" class="perigo">Excluir</button></td></tr></tbody></table></section>
+</main>
+</body>
+</html>
