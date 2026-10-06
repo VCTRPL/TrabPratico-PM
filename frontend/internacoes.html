@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Internações - Sistema Hospitalar</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>Sistema Hospitalar</h1><nav><a href="index.html">Início</a><a href="pacientes.html">Pacientes</a><a href="profissionais.html">Profissionais</a><a href="consultas.html">Consultas</a><a href="internacoes.html" class=ativo>Internações</a><a href="quartos.html">Quartos</a><a href="historico.html">Histórico</a></nav></header>
+<main>
+<h2>Internações</h2>
+<section class="card"><form><label>Paciente<select><option>Selecione</option><option>Maria Souza</option><option>João Pereira</option></select></label><label>Profissional responsável<select><option>Selecione</option><option>Dra. Ana Lima</option><option>Dr. Carlos Dias</option></select></label><label>Quarto<select><option>Selecione</option><option>101 (disponível)</option><option>102 (disponível)</option></select></label><label>Data de entrada<input type="date"></label><label>Data prevista de alta<input type="date"></label><label>Data efetiva de alta<input type="date"></label><label class="largo">Observações<textarea rows="3"></textarea></label><div class="acoes"><button type="button">Registrar internação</button><button type="reset" class="sec">Limpar</button></div></form></section><section class="card"><table><thead><tr><th>Paciente</th><th>Profissional</th><th>Quarto</th><th>Entrada</th><th>Prevista</th><th>Alta efetiva</th><th>Ações</th></tr></thead><tbody><tr><td>João Pereira</td><td>Dr. Carlos Dias</td><td>101</td><td>05/10/2026</td><td>09/10/2026</td><td>—</td><td><button type="button" class="sec">Editar</button> <button type="button" class="perigo">Excluir</button></td></tr></tbody></table></section>
+</main>
+</body>
+</html>
