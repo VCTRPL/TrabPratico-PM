@@ -16,8 +16,10 @@ import java.time.LocalTime;
 
 /**
  * Base de todo atendimento do hospital: sempre envolve um paciente, um profissional e um horário marcado.
- * Consultas e procedimentos cirúrgicos herdam desta classe, o que permite à agenda do profissional
- * consultar todos os atendimentos de uma só vez.
+ * Consultas, atendimentos de emergência e procedimentos cirúrgicos herdam desta classe, o que permite à
+ * agenda do profissional consultar todos os atendimentos de uma só vez.
+ *
+ * <p>Os dados comuns são validados aqui; as regras próprias de cada tipo ficam em {@link #validar()}.
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -58,6 +60,22 @@ public abstract class Atendimento {
         this.profissional = profissional;
         this.data = data;
         this.horario = horario;
+    }
+
+    /** Valida as regras específicas do tipo de atendimento, lançando {@link RegraNegocioException} se violadas. */
+    public abstract void validar();
+
+    /** Indica se o atendimento ainda reserva o horário do profissional. Um atendimento cancelado libera a agenda. */
+    public boolean ocupaAgenda() {
+        return true;
+    }
+
+    protected void remarcar(LocalDate novaData, LocalTime novoHorario) {
+        if (novaData == null || novoHorario == null) {
+            throw new RegraNegocioException("O atendimento exige data e horário.");
+        }
+        this.data = novaData;
+        this.horario = novoHorario;
     }
 
     public Long getId() {
