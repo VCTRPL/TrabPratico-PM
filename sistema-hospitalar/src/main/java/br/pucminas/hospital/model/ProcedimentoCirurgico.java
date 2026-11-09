@@ -52,20 +52,30 @@ public class ProcedimentoCirurgico extends Atendimento {
             String tipoCirurgia,
             String observacoesPreOperatorias) {
         super(paciente, cirurgiao, dataPrevista, horarioPrevisto);
-        if (descricao == null || descricao.isBlank()) {
+        this.descricao = textoOuNulo(descricao);
+        this.tipoCirurgia = textoOuNulo(tipoCirurgia);
+        this.observacoesPreOperatorias = textoOuNulo(observacoesPreOperatorias);
+        this.terminoPrevisto = terminoPrevisto;
+        this.status = StatusProcedimento.AGENDADO;
+        validar();
+    }
+
+    @Override
+    public void validar() {
+        if (descricao == null) {
             throw new RegraNegocioException("O procedimento cirúrgico exige uma descrição.");
         }
-        if (tipoCirurgia == null || tipoCirurgia.isBlank()) {
+        if (tipoCirurgia == null) {
             throw new RegraNegocioException("O procedimento cirúrgico exige o tipo de cirurgia.");
         }
         if (terminoPrevisto != null && !terminoPrevisto.isAfter(getInicioPrevisto())) {
             throw new RegraNegocioException("O término previsto deve ser posterior ao início previsto.");
         }
-        this.descricao = descricao.trim();
-        this.tipoCirurgia = tipoCirurgia.trim();
-        this.observacoesPreOperatorias = textoOuNulo(observacoesPreOperatorias);
-        this.terminoPrevisto = terminoPrevisto;
-        this.status = StatusProcedimento.AGENDADO;
+    }
+
+    @Override
+    public boolean ocupaAgenda() {
+        return status != StatusProcedimento.CANCELADO;
     }
 
     public void iniciar(LocalDateTime momento) {

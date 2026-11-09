@@ -111,8 +111,10 @@ class ApiCirurgiasInternacoesIntegrationTest {
         long cirurgiao = criarProfissional("CIRURGIAO", "CRM-1", "Cardíaca");
         long paciente = criarPaciente("111.111.111-11");
         long primeiro = idDe(enviar("/profissionais/" + cirurgiao + "/procedimentos", procedimento(paciente)));
-        enviar("/profissionais/" + cirurgiao + "/procedimentos", procedimento(paciente));
+        // O cancelamento libera o horário (RN3), permitindo agendar outro procedimento no mesmo horário.
         enviar("/procedimentos/" + primeiro + "/cancelar", "");
+        enviar("/profissionais/" + cirurgiao + "/procedimentos", procedimento(paciente))
+                .andExpect(status().isCreated());
 
         mvc.perform(get("/profissionais/" + cirurgiao + "/procedimentos").param("status", "AGENDADO"))
                 .andExpect(jsonPath("$", hasSize(1)));
