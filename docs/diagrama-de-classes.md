@@ -14,13 +14,37 @@ classDiagram
         -String email
     }
     class ProfissionalSaude {
+        <<abstract>>
         -Long id
         -String nome
         -String registroProfissional
-        -String especialidade
         -String telefone
         -String email
-        +estaDisponivel(data, horario) boolean
+        +getTipo()* TipoProfissional
+        +getAreaAtuacao()* String
+        +definirAreaAtuacao(area)* void
+        +atuaNaArea(area) boolean
+    }
+    class MedicoClinicoGeral {
+        +encaminhar(paciente, especialidadeDestino, motivo) Encaminhamento
+    }
+    class MedicoEspecialista {
+        -String especialidade
+    }
+    class Cirurgiao {
+        -String areaCirurgica
+    }
+    class Encaminhamento {
+        -Long id
+        -String especialidadeDestino
+        -String motivo
+        -LocalDate dataEncaminhamento
+    }
+    class TipoProfissional {
+        <<enumeration>>
+        CLINICO_GERAL
+        ESPECIALISTA
+        CIRURGIAO
     }
     class Consulta {
         -Long id
@@ -64,6 +88,12 @@ classDiagram
         OCUPADO
     }
 
+    ProfissionalSaude <|-- MedicoClinicoGeral
+    ProfissionalSaude <|-- MedicoEspecialista
+    ProfissionalSaude <|-- Cirurgiao
+    ProfissionalSaude --> TipoProfissional
+    MedicoClinicoGeral "1" --> "0..*" Encaminhamento : emite
+    Encaminhamento "0..*" --> "1" Paciente : encaminha
     Paciente "1" --> "0..*" Consulta : realiza
     ProfissionalSaude "1" --> "0..*" Consulta : atende
     Paciente "1" --> "0..*" Internacao : possui
@@ -78,6 +108,7 @@ classDiagram
 
 ## Regras de negócio refletidas no modelo
 
-- Consulta exige paciente e profissional responsável (RN2); o profissional não pode ter dois atendimentos no mesmo horário (RN3, validada em `estaDisponivel`).
+- Consulta exige paciente e profissional responsável (RN2); o profissional não pode ter dois atendimentos no mesmo horário (RN3, verificada pela interface `AgendaProfissional` da camada Service).
 - Internação exige paciente e quarto disponível (RN4); o quarto não ultrapassa `capacidadeMaxima` (RN5, validada em `temVaga`).
 - `HistoricoMedico` consolida consultas e internações do paciente (RN1 e RN6).
+- Só o médico clínico geral emite `Encaminhamento`. O médico especialista exige especialidade e o cirurgião exige área cirúrgica.
